@@ -27,7 +27,7 @@ Capital.prototype = {
         this.order[element].shift();
       };
     };
-    console.log(this.order);
+    console.table(this.order);
     /*
     Then we should update the data itself in a separate function
     for the cases when the update is not caused directly by user input.
@@ -53,11 +53,12 @@ Capital.prototype = {
     updatedVariables.push(variable);
     updatedVariables.push(indepVarOne);
     updatedVariables.push(indepVarTwo);
-    console.log('the input var and 2 independent var-s')
-    console.log(updatedVariables)
+    console.log('the input var and 2 independent var-s');
+    console.log(updatedVariables);
     
     // now we should find the 4 directly dependent variables
     //(input + 1 indep.var defines 2 directly dependent var-s)
+    console.groupCollapsed("Calculation details");
     let indepVar = 0;
     for (const groupIndex of this.elements[variable]) {
       //this.elements[variable] is an array of indices of 2 active groups
@@ -112,7 +113,8 @@ Capital.prototype = {
       };
     })();
     this.calculate(lastVar, lastArgs[0], lastArgs[1]);
-    console.log(this.data);
+    console.groupEnd();
+    console.dir(this.data);
   },
   calculate: function(a, b, c) {
     console.log(`${this.labels[a]} from ${this.labels[b]} and ${this.labels[c]}`);
